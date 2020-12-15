@@ -138,10 +138,6 @@ variable "clusters" {
             location = "us-east1-c"
             issue_cert = "false"
             zone = "us-east1-c"
-            node_locations = [ "us-east1-b", "us-east1-d" ]
-            labels = "prod"
-            tags = ["bloggerbob", "poc"]
-            machine_type = "n1-standard-1"
         }
     }
 }
