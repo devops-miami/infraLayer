@@ -142,3 +142,8 @@ variable "clusters" {
     }
 }
 ```
+
+At this point the project will fail because we do that not have a `container_node_pool`. 
+For us to create one we need to reference the `GKE cluster` we just created in the step before. But, before we call the `container_node_pool` we need to create a module for it. Using the same steps as before create your next module.
+
+Tomorrow I will be adding the next steps which link the two together.
