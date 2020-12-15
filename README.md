@@ -10,6 +10,7 @@ Some of default setup.
 mkdir project # this folder will contain the main.tf and be the start point
 mkdir modules # all of our custom modules go here
 touch project/main.tf # where tf apply starts
+touch project/vars.tf # the variables we are going to pass to our terraform
 touch project/README.md # document what you build
 touch project/output.tf # what we need to output at the end of it all
 touch project/providers.tf # how we connect to the places we are deploying too
@@ -121,3 +122,27 @@ output "endpoint" {
 ```
 
 This output will help us establish our dependency for the `container_node_pool` using `lookup()`.
+
+## Building the Main Project
+The starting point in `Terraform` is the directory you run `terraform apply` from called the root directory. In this case it is called `project` and this folder will contain the three files we use the most in `Terraform`. Edit `project/main.tf` to have a reference to the custom module we just created.
+
+The code is kept dry by passing variables to the `main.tf` which in turn passes it to the modules. When we want to provision different infrastructure we can reference a different variables file like `prod-vars.tf`.
+
+Add the map for clusters, it should look like this
+```sh
+# Clusters
+variable "clusters" {
+    type = map
+    default = {
+        blog-cluster = {
+            location = "us-east1-c"
+            issue_cert = "false"
+            zone = "us-east1-c"
+            node_locations = [ "us-east1-b", "us-east1-d" ]
+            labels = "prod"
+            tags = ["bloggerbob", "poc"]
+            machine_type = "n1-standard-1"
+        }
+    }
+}
+```
