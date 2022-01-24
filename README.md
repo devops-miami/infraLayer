@@ -30,9 +30,9 @@ If you don't know much about `Terraform` and this is your first rodeo you'll wan
 Create the files we need to work with.
 ```sh
 mkdir google_container_cluster # folder containing a single resource
-touch main.tf # resource
-touch vars.tf # variables we can pass to the resource
-touch output.tf # the output of this module
+touch google_container_cluster/main.tf # resource
+touch google_container_cluster/vars.tf # variables we can pass to the resource
+touch google_container_cluster/output.tf # the output of this module
 ```
 
 Copy pasta the resource you are trying to create from the Terraform page. This block says you want to create a `google_container_cluster`. 
